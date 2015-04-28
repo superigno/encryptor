@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.superigno.util.BasicEncryptor;
+import com.superigno.util.Encryptor;
 
 public class App extends JDialog {
 	/**
@@ -96,7 +96,7 @@ public class App extends JDialog {
 				if(key.getText().trim().equals("")){
 					JOptionPane.showMessageDialog(getContentPane(), "Key is required.", "", JOptionPane.ERROR_MESSAGE);
 				}else{
-					BasicEncryptor en = new BasicEncryptor();
+					Encryptor en = new Encryptor();
 					try {
 						value.setText(en.encrypt(key.getText(), text.getText()));
 						btnCopy.setEnabled(true);
