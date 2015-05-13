@@ -5,7 +5,7 @@ import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 public class Encryptor {
 	
-	private static final String ALGO = "PBEWITHSHA256AND128BITAES-CBC-BC";
+	private static final String ALGO = "PBEWITHSHA256AND256BITAES-CBC-BC";
 	
 	public String encrypt(String key, String text) throws Exception {
 		StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
