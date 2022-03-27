@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.superigno.util.Encryptor;
@@ -56,35 +57,35 @@ public class App extends JDialog {
 		setBounds(100, 100, 412, 187);
 		getContentPane().setLayout(null);
 		
-		JLabel lblKey = new JLabel("   Key:");
+		JLabel lblKey = new JLabel("   Text:");
 		lblKey.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblKey.setBounds(33, 25, 46, 14);
+		lblKey.setBounds(37, 25, 46, 14);
 		getContentPane().add(lblKey);
 		
-		JLabel lblText = new JLabel("  Text:");
+		JLabel lblText = new JLabel("  Key:");
 		lblText.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblText.setBounds(33, 50, 46, 14);
+		lblText.setBounds(43, 50, 46, 14);
 		getContentPane().add(lblText);
-		
-		key = new JTextField();
-		key.setBounds(82, 22, 249, 20);
-		getContentPane().add(key);
-		key.setColumns(10);
 		
 		text = new JTextField();
 		text.setColumns(10);
-		text.setBounds(82, 47, 249, 20);
+		text.setBounds(92, 22, 249, 20);
 		getContentPane().add(text);
+		
+		key = new JPasswordField();
+		key.setBounds(92, 47, 249, 20);
+		getContentPane().add(key);
+		key.setColumns(10);
 		
 		JLabel lblValue = new JLabel("Result:");
 		lblValue.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblValue.setBounds(33, 75, 46, 14);
+		lblValue.setBounds(43, 75, 46, 14);
 		getContentPane().add(lblValue);
 		
 		value = new JTextField();
 		value.setEditable(false);
 		value.setColumns(10);
-		value.setBounds(82, 75, 249, 20);
+		value.setBounds(92, 75, 249, 20);
 		getContentPane().add(value);
 		
 		JButton btnEncrypt = new JButton("Encrypt");
