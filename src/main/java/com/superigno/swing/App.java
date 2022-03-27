@@ -36,6 +36,7 @@ public class App extends JDialog {
 					App dialog = new App();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
+					dialog.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,8 +52,8 @@ public class App extends JDialog {
 		Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/key.png"));
 		
 		setIconImage(img);
-		setTitle("Encryptor");
-		setBounds(100, 100, 383, 187);
+		setTitle("Encryptor / Decryptor");
+		setBounds(100, 100, 412, 187);
 		getContentPane().setLayout(null);
 		
 		JLabel lblKey = new JLabel("   Key:");
@@ -107,8 +108,30 @@ public class App extends JDialog {
 				}
 			}
 		});
-		btnEncrypt.setBounds(82, 106, 89, 23);
+		btnEncrypt.setBounds(22, 106, 89, 23);
 		getContentPane().add(btnEncrypt);
+		
+		
+		JButton btnDecrypt = new JButton("Decrypt");
+		btnDecrypt.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnDecrypt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(key.getText().trim().equals("")){
+					JOptionPane.showMessageDialog(getContentPane(), "Key is required.", "", JOptionPane.ERROR_MESSAGE);
+				}else{
+					Encryptor en = new Encryptor();
+					try {
+						value.setText(en.decrypt(key.getText(), text.getText()));
+					} catch (Exception e1) {
+						JOptionPane.showMessageDialog(getContentPane(), "Unable to decrypt.", "", JOptionPane.INFORMATION_MESSAGE);
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		btnDecrypt.setBounds(122, 106, 89, 23);
+		getContentPane().add(btnDecrypt);
+		
 		
 		btnCopy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -118,7 +141,7 @@ public class App extends JDialog {
 				JOptionPane.showMessageDialog(getContentPane(), "Result copied to clipboard!", "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnCopy.setBounds(181, 106, 70, 23);
+		btnCopy.setBounds(222, 106, 70, 23);
 		getContentPane().add(btnCopy);
 		
 		JButton btnClear = new JButton("Clear");
@@ -131,7 +154,7 @@ public class App extends JDialog {
 				btnCopy.setEnabled(false);
 			}
 		});
-		btnClear.setBounds(261, 106, 70, 23);
+		btnClear.setBounds(302, 106, 70, 23);
 		getContentPane().add(btnClear);
 
 	}
